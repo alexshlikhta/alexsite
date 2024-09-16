@@ -1,7 +1,8 @@
 {
-  "name": "alexsite",
-  "version": "0.1.0",
+  "name": "Alex Shlikhta",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,14 +10,30 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^14.2.5",
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18"
+    "@gsap/react": "^2.1.1",
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.7",
+    "@types/three": "^0.168.0",
+    "@vercel/speed-insights": "^1.0.12",
+    "gsap": "file:gsap-bonus.tgz",
+    "next": "^14.2.11",
+    "normalize.css": "^8.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "swiper": "^11.1.12",
+    "three": "^0.168.0"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5",
-    "eslint-config-prettier": "^9.1.0"
+    "@eslint/js": "^9.9.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.78.0",
+    "sass-embedded": "^1.77.8"
   }
 }

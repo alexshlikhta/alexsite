@@ -1,0 +1,13 @@
+@function pxVh($f-px, $vh) {
+  $k: calc($f-px/$vh * 100);
+  $k: calc(round($k * 100) / 100);
+  $b: vh;
+  @return #{$k}#{$b};
+}
+
+@function pxVw($f-px, $vw) {
+  $k: calc($f-px/$vw * 100);
+  $k: calc(round($k * 100) / 100);
+  $b: vw;
+  @return #{$k}#{$b};
+}

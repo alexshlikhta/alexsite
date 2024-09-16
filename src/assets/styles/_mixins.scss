@@ -1,0 +1,33 @@
+$d-1920: 1919px;
+$d-1440: 1439px;
+$d-1024: 1023px;
+$d-768: 767px;
+$d-640: 639px;
+
+@mixin s-1440 {
+  @media (max-width: #{$d-1920}) {
+    @content;
+  }
+}
+
+@mixin s-1024 {
+  @media (max-width: #{$d-1440}) {
+    @content;
+  }
+}
+
+@mixin s-768 {
+  @media screen and (max-width: #{$d-1024}) {
+    @content;
+  }
+}
+
+@mixin s-375 {
+  @media screen and (max-width: #{$d-640}) {
+    @content;
+  }
+}
+
+@mixin mt40 {
+  margin-top: 40px;
+}

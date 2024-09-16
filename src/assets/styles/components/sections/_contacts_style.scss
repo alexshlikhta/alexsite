@@ -1,0 +1,40 @@
+.section-contacts {
+  padding: 200px 0;
+
+  &-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .collab {
+    flex: 0 0 50%;
+
+    &-text {
+      color: var(--color-white-2);
+      font-family: var(--font-ibm);
+      font-size: 1.8rem;
+      line-height: 150%;
+      max-width: 410px;
+      display: block;
+    }
+
+    & h3 {
+      padding-top: 40px;
+      font-weight: 400;
+    }
+
+    & a {
+      text-decoration: underline;
+      font-size: 6rem;
+      line-height: 120%;
+    }
+  }
+
+  & .socials {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 0 0 24%;
+  }
+}

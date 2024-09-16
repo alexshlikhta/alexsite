@@ -1,0 +1,22 @@
+@import 'normalize.scss';
+@import 'swiper/css';
+
+@import './fonts';
+@import './colors';
+@import './mixins';
+@import './globals';
+
+@import './components/header';
+@import './components/main';
+@import './components/footer';
+
+//sections on main page
+@import './components/sections/hero_style.scss';
+@import './components/sections/desc_style.scss';
+@import './components/sections/cases_style.scss';
+@import './components/sections/works_style.scss';
+@import './components/sections/exp_style.scss';
+@import './components/sections/skills_style.scss';
+@import './components/sections/contacts_style.scss';
+
+@import './components/c-cursor.scss';

@@ -1,0 +1,53 @@
+{
+  "header": ["Year", "Project name", "Description", "Role", "Tech stack", "Link"],
+  "projects": [
+    {
+      "year": "2023 - 2024",
+      "project_name": "Pesabase",
+      "description": "Developed a payment integration system for cross-border transactions.",
+      "role": "Lead front-end developer",
+      "tech_stack": "React, Node.js, AWS",
+      "link": "https://pesabase.com"
+    },
+    {
+      "year": "2022 - 2023",
+      "project_name": "TechSync",
+      "description": "Built a real-time collaboration tool for remote teams.",
+      "role": "Senior front-end developer",
+      "tech_stack": "Vue.js, Firebase, Docker",
+      "link": "https://techsync.com"
+    },
+    {
+      "year": "2021 - 2022",
+      "project_name": "EduLearn",
+      "description": "Created a dynamic e-learning platform for schools and universities.",
+      "role": "Front-end developer",
+      "tech_stack": "Angular, Node.js, MongoDB",
+      "link": "https://edulearn.com"
+    },
+    {
+      "year": "2020 - 2021",
+      "project_name": "HealthCheck",
+      "description": "Developed a health monitoring dashboard for hospitals.",
+      "role": "Full-stack developer",
+      "tech_stack": "React, Express, PostgreSQL",
+      "link": "https://healthcheck.com"
+    },
+    {
+      "year": "2019 - 2020",
+      "project_name": "ShopEase",
+      "description": "Designed and developed an e-commerce platform with real-time inventory tracking.",
+      "role": "Lead front-end developer",
+      "tech_stack": "React, GraphQL, AWS",
+      "link": "https://shopease.com"
+    },
+    {
+      "year": "2018 - 2019",
+      "project_name": "MediaStream",
+      "description": "Implemented a video streaming platform with live chat functionality.",
+      "role": "Front-end developer",
+      "tech_stack": "Vue.js, Node.js, Redis",
+      "link": "https://mediastream.com"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+.section-works {
+  padding: 200px 0;
+
+  &-title {
+    color: var(--color-gray-6);
+    font-family: var(--font-ibm);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    padding: 0 0 40px;
+  }
+
+  & table {
+    font-family: var(--font-ibm);
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+
+    & td,
+    th {
+      padding: 20px;
+      border: none;
+    }
+
+    & thead {
+      background: var(--color-gray-7);
+    }
+
+    & tr {
+      border-bottom: solid 1px var(--color-gray-5);
+    }
+
+    & tfoot {
+      background: var(--color-gray-7);
+
+      & td {
+        padding: 40px 20px;
+      }
+    }
+  }
+}

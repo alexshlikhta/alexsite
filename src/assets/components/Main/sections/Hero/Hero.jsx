@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import heroBG from '../../../../images/hero_bg.png';
 import iconStatus from '../../../../icons/icon_status.png';
 import iconArrow from '../../../../icons/icon_arrow_circle.svg';
 import iconCorner from '../../../../icons/icon_corner.svg';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 const Hero = () => {
   return (

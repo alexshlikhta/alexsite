@@ -1,5 +1,6 @@
 .section-merge {
   position: relative;
+  background-color: var(--color-black-0);
 }
 
 .section-desc {
@@ -33,7 +34,6 @@
     height: 88px;
     border-radius: 1030px;
     margin: 0 20px 0 0;
-    background: var(--color-gray-5);
   }
 }
 
@@ -43,7 +43,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  opacity: 0;
 
   & h5 {
     color: var(--color-gray-6);
@@ -97,9 +96,9 @@
         width: 100vw;
         height: 100vh;
         position: absolute;
-        aspect-ratio: 770 / 630;
-        top: 0;
-        left: 0;
+        bottom: -50%;
+        right: -50%;
+        transform: translate(-50%, -50%);
         z-index: 1;
       }
     }

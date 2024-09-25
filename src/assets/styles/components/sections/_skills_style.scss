@@ -1,5 +1,7 @@
 .section-skills {
-  margin-bottom: 190px;
+  margin-bottom: 100vh;
+  background-color: var(--color-black-0);
+
   &-bg {
     position: absolute;
     left: 0;
@@ -9,6 +11,10 @@
     z-index: -1;
     pointer-events: none;
     user-select: none;
+
+    & img {
+      height: 100%;
+    }
   }
 
   &-box {

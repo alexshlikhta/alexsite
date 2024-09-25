@@ -1,3 +1,16 @@
 .c-main {
   overflow-x: hidden;
 }
+
+.scene {
+  position: relative;
+  z-index: 1;
+
+  & > div {
+    background-color: var(--color-black-0);
+  }
+}
+
+#smooth-wrapper {
+  z-index: 1;
+}

@@ -1,18 +1,19 @@
-import heroBG from '../../../../images/hero_bg.png';
 import iconStatus from '../../../../icons/icon_status.png';
 import iconArrow from '../../../../icons/icon_arrow_circle.svg';
 import iconCorner from '../../../../icons/icon_corner.svg';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import EmergingImage from '../../../EmergingImage';
 
 const Hero = () => {
   return (
     <section className='section-hero'>
       <div className='container'>
         <div className='section-hero-box'>
-          <span className='section-hero--bg'>
-            <Image src={heroBG} alt='hero bg image' />
-          </span>
+          <div className='section-hero--bg'>
+            {/* <Image src={heroBG} alt='hero bg image' /> */}
+            <EmergingImage className='img' url='/assets/images/hero_bg.png' />
+          </div>
 
           <div className='info'>
             <div className='info-status'>

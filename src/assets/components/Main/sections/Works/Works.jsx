@@ -1,122 +1,155 @@
 import PropTypes from 'prop-types';
 import data from '../../../../data/works.json';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
 
+const lettersAndSymbols = [
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+  '!',
+  '@',
+  '#',
+  '$',
+  '%',
+  '^',
+  '&',
+  '*',
+  '-',
+  '_',
+  '+',
+  '=',
+  ';',
+  ':',
+  '<',
+  '>',
+  ',',
+];
+
 const Works = () => {
   const { header, projects } = data;
+  const container = useRef(null);
+  const textRefs = useRef([]);
 
-  const container = useRef();
-  // const lettersAndSymbols = [
-  //   'a',
-  //   'b',
-  //   'c',
-  //   'd',
-  //   'e',
-  //   'f',
-  //   'g',
-  //   'h',
-  //   'i',
-  //   'j',
-  //   'k',
-  //   'l',
-  //   'm',
-  //   'n',
-  //   'o',
-  //   'p',
-  //   'q',
-  //   'r',
-  //   's',
-  //   't',
-  //   'u',
-  //   'v',
-  //   'w',
-  //   'x',
-  //   'y',
-  //   'z',
-  //   '!',
-  //   '@',
-  //   '#',
-  //   '$',
-  //   '%',
-  //   '^',
-  //   '&',
-  //   '*',
-  //   '-',
-  //   '_',
-  //   '+',
-  //   '=',
-  //   ';',
-  //   ':',
-  //   '<',
-  //   '>',
-  //   ',',
-  // ];
-  useGSAP(
-    () => {
-      const section = '.section-works';
-      const words = '.section-works td';
+  const splitText = (column) => {
+    if (!column) return;
 
-      console.log(words);
+    const splitter = new SplitText(column, { type: 'chars', charsClass: 'char' });
+    const splitChars = splitter.chars;
+    return splitChars;
+  };
 
-      // const splitTitle = new SplitText(words, {
-      //   type: 'chars',
-      // });
+  const animate = (splitChars) => {
+    if (!splitChars) return;
 
-      // const animateText = () => {
-      //   gsap.to(words, {
-      //     duration: 10,
-      //     scrambleText: {
-      //       text: '{original}',
-      //       chars: lettersAndSymbols,
-      //     },
-      //     stagger: {
-      //       each: 0.1,
-      //     },
-      //   });
-      // };
+    splitChars.forEach((char, position) => {
+      let initialHTML = char.innerHTML;
+      let repeatCount = 0;
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        // onEnter: animateText,
+      gsap.fromTo(
+        char,
+        { opacity: 0 },
+        {
+          duration: 0.03,
+          onStart: () => {
+            gsap.set(char, { '--opa': 1 });
+          },
+          onComplete: () => {
+            gsap.set(char, { innerHTML: initialHTML, delay: 0.03 });
+          },
+          repeat: 3,
+          onRepeat: () => {
+            repeatCount++;
+            if (repeatCount === 1) {
+              gsap.set(char, { '--opa': 0 });
+            }
+          },
+          repeatRefresh: true,
+          repeatDelay: 0.04,
+          delay: (position + 1) * 0.07,
+          innerHTML: () => lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
+          opacity: 1,
+        }
+      );
+    });
+  };
+
+  useGSAP(() => {
+    if (textRefs.current.length) {
+      textRefs.current.map((row) => {
+        ScrollTrigger.create({
+          trigger: row,
+          start: 'top bottom',
+          scrub: true,
+          onEnter: () => {
+            const columns = [...row.querySelectorAll('td')];
+            columns.forEach((column) => {
+              const splitChars = splitText(column);
+              animate(splitChars);
+            });
+          },
+          // markers: true,
+        });
       });
-    },
-    { scope: container }
-  );
+    }
+  }, [container]);
 
   return (
     <section className='section-works' ref={container}>
       <div className='container'>
         <div className='section-works-title'>Latest projects</div>
-
         <table>
           <thead>
             <tr>
-              {header.map((field, index) => {
-                return <th key={index}>{field}</th>;
-              })}
+              {header.map((field, index) => (
+                <th key={index}>{field}</th>
+              ))}
             </tr>
           </thead>
 
           <tbody>
-            {projects.map(({ year, project_name, description, role, tech_stack, link }) => {
-              return (
-                <tr key={link}>
+            {projects.map(
+              ({ year, project_name, description, role, tech_stack, link }, rowIndex) => (
+                <tr key={link} ref={(el) => (textRefs.current[rowIndex] = el)}>
                   <td>{year}</td>
-                  <th scope='row'>{project_name}</th>
+                  <td scope='row'>{project_name}</td>
                   <td>{description}</td>
                   <td>{role}</td>
                   <td>{tech_stack}</td>
-                  <td>{link}</td>
+                  <td>
+                    <a href={link}>Visit</a>
+                  </td>
                 </tr>
-              );
-            })}
+              )
+            )}
           </tbody>
 
           <tfoot>

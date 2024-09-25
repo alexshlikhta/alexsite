@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import skillsBG from '../../../../images/skills_bg.jpg';
+import { useRef } from 'react';
 
 const Skills = () => {
+  const container = useRef(null);
+
   return (
-    <section className='section-skills'>
+    <section className='section-skills' ref={container}>
       <div className='container'>
         <div className='section-skills-box'>
           <span className='section-skills-bg'>

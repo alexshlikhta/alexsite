@@ -9,6 +9,8 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import useIsomorphicLayoutEffect from './assets/helpers/isomorphicEffect';
 import { useRef } from 'react';
 import gsap from 'gsap';
+import Scene from './assets/components/Scene';
+import Footer from './assets/components/Footer';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -21,7 +23,7 @@ const App = () => {
     if (!isMobile) {
       ctx.current = gsap.context(() => {
         smoother.current = ScrollSmoother.create({
-          smooth: 1.6,
+          smooth: 2,
           effects: true,
           normalizeScroll: true,
         });
@@ -32,15 +34,17 @@ const App = () => {
   return (
     <>
       <SpeedInsights />
-
+      <div className='scene'>
+        <Scene />
+      </div>
       <Header isMobile={isMobile} smoother={smoother} />
-
       <div id='smooth-wrapper'>
         <div id='smooth-content'>
           <Main isMobile={isMobile} />
         </div>
       </div>
 
+      <Footer />
       <Cursor />
     </>
   );

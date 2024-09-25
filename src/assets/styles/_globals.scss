@@ -10,7 +10,6 @@ html {
 }
 
 body {
-  background-color: var(--color-black-0);
   color: var(--color-white-0);
   font-family: var(--font-graphik-reg);
   font-size: 2rem;
@@ -115,4 +114,39 @@ ul {
   width: 60px;
   border-radius: 40px 0 0;
   margin: 0 auto 0 0;
+}
+
+.grid {
+  gap: 3vw;
+  grid-template-columns: repeat(10, 1fr);
+  grid-auto-rows: auto;
+  width: 100%;
+  display: grid;
+  position: relative;
+  margin: 10vh auto 50vh;
+  padding: 0 3rem;
+  grid-row-gap: 3rem;
+}
+
+.grid__item {
+  grid-column: 1 / span 4;
+  grid-row: 1;
+}
+
+.grid__item-img {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--img-ratio);
+}
+
+.grid__item-img-inner {
+  width: 100%;
+  height: 50vh;
+  background-position: 50%;
+  background-size: cover;
+  position: relative;
 }

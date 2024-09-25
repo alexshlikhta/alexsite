@@ -1,6 +1,4 @@
 .section-hero {
-  padding: 0 0 40px;
-
   & .container {
     height: calc(100vh - 40px);
   }
@@ -125,9 +123,9 @@
     user-select: none;
     pointer-events: none;
 
-    & img {
+    & .img {
       height: 100%;
-      object-fit: cover;
+      width: 100%;
     }
   }
 }

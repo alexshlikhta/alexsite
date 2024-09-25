@@ -1,4 +1,4 @@
-import { Hero, Cases, Works, Exp, Skills, Contacts } from './sections';
+import { Hero, Cases, Works, Exp, Skills } from './sections';
 import Footer from '../Footer';
 import PropTypes from 'prop-types';
 
@@ -11,10 +11,9 @@ const Main = ({ isMobile }) => {
         <Works isMobile={isMobile} />
         <Exp isMobile={isMobile} />
         <Skills isMobile={isMobile} />
-        <Contacts isMobile={isMobile} />
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

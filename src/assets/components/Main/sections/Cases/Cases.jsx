@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
@@ -13,8 +13,10 @@ gsap.registerPlugin(SplitText);
 const Cases = () => {
   const container = useRef();
   const [swiper, setSwiper] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const images = useRef([]);
+  const [activeIndex, setActiveIndex] = useState({
+    slide: 0,
+    direction: 1,
+  });
 
   const setSlider = (slider) => setSwiper(slider);
 
@@ -25,8 +27,6 @@ const Cases = () => {
     const sectionDescSelector = '.section-desc';
     const headingSelector = `${sectionDescSelector} h3`;
     const frameSelector = '.section-desc-frame';
-    const sliderSelector = '.section-cases';
-    // const sliderIMGSelector = '.swiper-slide-image';
     const totalSlides = swiper.slides.length;
 
     const splitTitle = new SplitText(headingSelector, {
@@ -49,16 +49,24 @@ const Cases = () => {
         scrollTrigger: {
           trigger: sectionMergeSelector,
           start: 'center center',
-          end: '+=700%',
+          end: '+=700%', // Adjust the length of the animation as needed
           scrub: true,
           pin: true,
           onUpdate: (self) => {
             const progress = self.progress;
-            const slideIndex = Math.floor(progress * totalSlides);
+            const direction = self.direction;
+            const slideProgressRange = 0.7 / totalSlides;
+            const minProgress = 0.3;
+            const slideIndex = Math.floor((progress - minProgress) / slideProgressRange);
 
-            if (slideIndex <= totalSlides - 1) {
-              setActiveIndex(slideIndex);
+            if (progress > minProgress && slideIndex >= 0 && slideIndex < totalSlides) {
+              setActiveIndex({ slide: slideIndex, direction, progress });
               swiper.slideTo(slideIndex);
+            }
+
+            if (progress < minProgress && direction < 0) {
+              swiper.slideTo(0);
+              setActiveIndex({ slide: 0, direction, progress });
             }
           },
         },
@@ -99,7 +107,7 @@ const Cases = () => {
           },
         }
       )
-      // scale little frames from 0 to 1 in the text description (1st section)
+      // scale frame from 0 to 1 in the text description (1st section)
       .to(frameSelector, {
         scale: 1,
         duration: 1,
@@ -116,11 +124,7 @@ const Cases = () => {
       })
       // scale 1 section frames from 1 to 0 with opacity to 0
       .to(sectionDescSelector, {
-        // id:'scale to 0 text',
-        scale: 0,
-        opacity: 0,
-        xPercent: '20',
-        yPercent: '10',
+        scale: 0.7,
         duration: 3,
         scrollTrigger: {
           trigger: sectionDescSelector,
@@ -129,33 +133,8 @@ const Cases = () => {
           scrub: true,
           // markers: true,
         },
-      })
-      // opacity of second section from 0 to 1
-      .to(sliderSelector, {
-        // id:'opacity to 1 image',
-        opacity: 1,
-        duration: 3,
-        scrollTrigger: {
-          trigger: sectionDescSelector,
-          start: '150% 60%',
-          end: '+=50% top',
-          scrub: true,
-          // markers: true,
-        },
       });
   }, [swiper, container]);
-
-  useEffect(() => {
-    if (images.current.length > 0) {
-      gsap.to(images.current, { opacity: 0, duration: 1 });
-
-      gsap.to(images.current[activeIndex], {
-        opacity: 1,
-        duration: 1,
-        ease: 'expo.out',
-      });
-    }
-  }, [activeIndex]);
 
   return (
     <section className='section-merge' ref={container}>
@@ -174,7 +153,7 @@ const Cases = () => {
       <div className='section-cases'>
         <div className='container'>
           <div className='section-cases-box'>
-            <h5>Selected Cases</h5>
+            <h5 className='text-move'>Selected Cases</h5>
 
             <Slider setSlider={setSlider} />
 

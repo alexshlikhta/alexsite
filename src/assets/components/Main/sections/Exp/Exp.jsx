@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import data from '../../../../data/expirience.json';
 import Image from 'next/image';
 import expPhoto from '../../../../images/exp_photo.png';
+import expBG from '../../../../images/exp_bg.jpg';
 import gsap from 'gsap';
 
 const Exp = () => {
@@ -39,6 +40,10 @@ const Exp = () => {
     <section className='section-exp'>
       <div className='container'>
         <div className='section-exp-box'>
+          <span className='section-exp--bg'>
+            <Image src={expBG} />
+          </span>
+
           <h3>
             With 5 years of experience at a creative studio, I&apos;ve had the pleasure of working
             on a variety of projects spanning{' '}

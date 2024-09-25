@@ -1,5 +1,6 @@
 .section-works {
   padding: 200px 0;
+  background-color: var(--color-black-0);
 
   &-title {
     color: var(--color-gray-6);
@@ -23,6 +24,21 @@
     th {
       padding: 20px;
       border: none;
+
+      & .char {
+        --opa: 0;
+
+        &:after {
+          content: '';
+          width: 1ch;
+          top: 0;
+          left: 0;
+          position: absolute;
+          opacity: var(--opa);
+          background: var(--color-white-0);
+          height: 100%;
+        }
+      }
     }
 
     & thead {

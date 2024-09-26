@@ -51,11 +51,10 @@
 
   &-title {
     margin-top: auto;
+    text-align: center;
 
     & h2 {
       text-align: center;
-      margin: 0 auto;
-      display: flex;
       font-size: 24rem;
       font-family: var(--font-graphik-bold);
       text-transform: uppercase;

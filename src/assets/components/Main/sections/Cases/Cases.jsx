@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import SlideImage from '../../../SlideImage';
 import Slider from '../../../Slider';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);

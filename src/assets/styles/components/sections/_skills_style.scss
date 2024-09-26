@@ -27,6 +27,15 @@
     border-radius: 40px;
     overflow: hidden;
     min-height: 780px;
+    position: relative;
+    border: solid 1px #201f25;
+
+    & canvas {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+    }
   }
 
   & .desc {
@@ -48,16 +57,16 @@
 
   & .block {
     position: absolute;
-    left: 20%;
-    top: 20%;
+    top: -200px;
     display: inline-flex;
-    transform: rotate(22.376deg);
     padding: 32px 60px;
+    will-change: transform;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
     border: 1px solid var(--color-gray-5);
-    background: var(linear-gradient(95deg, rgba(35, 57, 60, 0.48) 0%, rgba(25, 32, 50, 0.48) 100%));
-    backdrop-filter: blur(20px);
+    text-transform: uppercase;
+    background: linear-gradient(95deg, rgba(35, 57, 60, 0.48) 0%, rgba(25, 32, 50, 0.48) 100%);
+    // backdrop-filter: blur(20px);
   }
 }
